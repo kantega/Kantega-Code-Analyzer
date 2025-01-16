@@ -25,14 +25,26 @@ valgt_fil_name=$(basename $valgt_fil)
 
 csv_file=".kca/${valgt_fil_name}.complexity_trend.csv"
 
-python "$kca_path/../maat-scripts-python3/miner/git_complexity_trend.py" --file "$valgt_fil" --start "$start_commit" --end "$end_commit" > "$csv_file"
+
+# Check if python3 is available
+if command -v python3 &>/dev/null; then
+    PYTHON_CMD=python3
+# Check if python is available
+elif command -v python &>/dev/null; then
+    PYTHON_CMD=python
+else
+    echo "Error: Python is not installed."
+    exit 1
+fi
+
+$PYTHON_CMD "$kca_path/../maat-scripts-python3/miner/git_complexity_trend.py" --file "$valgt_fil" --start "$start_commit" --end "$end_commit" > "$csv_file"
 
 echo "2. generer plot fra complexity_trend csv"
 read
 
 png_file="${csv_file}.png"
 
-python "$kca_path/plotting/complexity_plot.py" "$csv_file" "$png_file"
+$PYTHON_CMD "$kca_path/plotting/complexity_plot.py" "$csv_file" "$png_file"
 
 echo "3. vis hvor plot ligger"
 echo "$png_file"
