@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-echo Steg 1: git exclude .kca mappen
-mkdir .kca
-grep '.kca/*' .git/info/exclude || echo -e "\n.kca/*\n" >> .git/info/exclude
-echo Steg 2: hent og lagre git loggen
-git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > .kca/git_log.txt
+REPO_DIR=$(git rev-parse --show-toplevel)
 
-echo 4 Kjør maat summary
-echo 5 verifisere?
+echo "Step 1: Creating .kca folder"
+KCA_DIR="$REPO_DIR/.kca"
+mkdir -p $KCA_DIR
+
+echo "Step 2: Creating git log"
+grep "$KCA_DIR/*" "$REPO_DIR/.git/info/exclude" > /dev/null || echo -e "\n$KCA_DIR/*\n" >> "$REPO_DIR/.git/info/exclude"
+git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > "$KCA_DIR/git_log.txt"
+
+# Todo: Kjør maat summary
+# Todo: verifisere?
