@@ -8,6 +8,8 @@ Her er et verktøy for å hjelpe deg å angripe et eksisterende prosjekt når du
 Sjekk ut repoet.
 * Steg 2: Kjør scriptet `source setup.sh` for å installere Kantega Code Analyzer. Da kan du kjøre kommandoen `kca_init` fra et hvilket som helst repo du vil analysere.
 * Steg 3: Kjør `kca_hotspots` for å finne ut hvilke filer som endres ofte.
+* Steg 4: Kjør `kca_complexity` etterfulgt av en fil for å finne ut hvordan filen har endret seg i kompleksitet den siste tiden.
+
 
 ### Installasjon
 
@@ -42,7 +44,7 @@ docker run -it kca
 
 * `kca_hotspots` gir deg en liste over aktuelle **hotspots** i koden din. Hotspots er filer som er mye endret over tid.
 
-* `kca_complexity` gir deg en oversikt over hvilke filer som har stor grad av kompleksitet, sammen med en oversikt over hvilke filer som endres mye.
+* `kca_complexity` gir deg en oversikt over hvilke filer som har stor grad av kompleksitet, sammen med en oversikt over hvilke filer som endres mye. Filstien gis inn som parameter.
 
 ### Hva sier dataen?
 
