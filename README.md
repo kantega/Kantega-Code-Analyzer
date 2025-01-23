@@ -41,6 +41,8 @@ docker run -it kca
 * `kca_init` kjøres som første kommando i et nytt prosjekt. Den vil lage en gitlog-fil som brukes til videre analyse av prosjektet.
 
 * `kca_hotspots` gir deg en liste over aktuelle **hotspots** i koden din. Hotspots er filer som er mye endret over tid.
+  * Denne kommandoen resulterer i et png-bilde med en graf. Dersom du bruker docker, kan du hente ut bildet fra containeren med følgende kommando. Den vil da kopiere bildet til der du står nå:
+  ```docker cp <container-id>:/app/.kca/hotspot_plot.png <dit du vil ha filen>```
 
 * `kca_complexity` gir deg en oversikt over hvilke filer som har stor grad av kompleksitet, sammen med en oversikt over hvilke filer som endres mye.
 
