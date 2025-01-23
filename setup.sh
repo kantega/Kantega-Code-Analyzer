@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Initate KCA setup"
+echo "Initiate KCA setup"
 absolute_path=$(pwd)
 # Create .bashrc if it doesn't exist
 if [ ! -f ~/.bashrc ]; then
