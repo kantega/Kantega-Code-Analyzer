@@ -13,7 +13,8 @@ output_png = sys.argv[2]
 if set(["module", "revisions", "code"]) <= set(df.columns):
 
     # Extract data
-    x_labels = df["module"]
+    N = 20  # Change this to the number of characters you want to show
+    x_labels = [label[-N:] if len(label) > N else label for label in df["module"]]
     revisions = df["revisions"]
     code = df["code"]
 
