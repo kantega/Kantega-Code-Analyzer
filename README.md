@@ -4,14 +4,10 @@
 
 Her er et verktøy for å hjelpe deg å angripe et eksisterende prosjekt når du er ny i prosjektet.
 
-* Steg 1:
-Sjekk ut repoet.
-* Steg 2: Kjør scriptet `source setup.sh` for å installere Kantega Code Analyzer. Da kan du kjøre kommandoen `kca_init` fra et hvilket som helst repo du vil analysere.
-* Steg 3: Kjør `kca_hotspots` for å finne ut hvilke filer som endres ofte.
-* Steg 4: Kjør `kca_complexity` etterfulgt av en fil for å finne ut hvordan filen har endret seg i kompleksitet den siste tiden.
-
-
 ### Installasjon
+Kantega Code Analyzer kan enten installeres og kjøres lokalt på din maskin, eller i et Docker Image.
+
+##### Installere lokalt på maskin
 
 Krever at man er på linux/mac eller kjører i Windows Subsystem for Linux (WSL) eller Git Bash på Windows.
 ```bash
@@ -27,7 +23,7 @@ pip install pandas
 pip install matplotlib
 ```
 
-#### Docker
+##### Innstallere med Docker
 
 Hvis du ikke har lyst til å installere noe lokalt kan du kjøre kca i Docker.
 
@@ -35,9 +31,6 @@ Hvis du ikke har lyst til å installere noe lokalt kan du kjøre kca i Docker.
 docker build -t kca .
 docker run -it kca
 ```
-
-
-
 
 ### Tilgjengelige kommandoer
 * `kca_init` kjøres som første kommando i et nytt prosjekt. Den vil lage en gitlog-fil som brukes til videre analyse av prosjektet.
