@@ -32,6 +32,29 @@ docker build -t kca .
 docker run -it kca
 ```
 
+Hvis du har bygget `kca`-bildet kan du kjøre `kca`-containeren i et repo du har lyst til å analysere:
+
+```bash
+docker run -v $(pwd):/app/source_code kca
+```
+
+Og deretter kjøre kca-kommandoene inne i containeren.
+
+```bash
+kca_init
+kca_hotspots
+kca_complexity <filsti>
+```
+
+Hvis du får en feilmelding inne i docker-containeren:
+```
+fatal: detected dubious ownership in repository at '/app/source_code'
+To add an exception for this directory, call:
+
+        git config --global --add safe.directory /app/source_code
+```
+
+Må du kjøre `git config --global --add safe.directory /app/source_code` før `kca_init`
 ### Tilgjengelige kommandoer
 * `kca_init` kjøres som første kommando i et nytt prosjekt. Den vil lage en gitlog-fil som brukes til videre analyse av prosjektet.
 
