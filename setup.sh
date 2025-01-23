@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-echo lag .bashrc fil på brukerens hjemmappe
-echo den filen må inneholde kca alias
+echo "Initiate KCA setup"
 absolute_path=$(pwd)
-echo $absolute_path
+# Create .bashrc if it doesn't exist
+if [ ! -f ~/.bashrc ]; then
+    echo "Creating .bashrc file for aliases"
+    touch ~/.bashrc
+fi
+
+echo "Creating KCA aliases"
 # Add alias for kca_init if it doesn't exist
 if ! grep -q "alias kca_init=" ~/.bashrc; then
     echo "alias kca_init='$absolute_path/scripts/init.sh'" >> ~/.bashrc
@@ -20,3 +25,4 @@ if ! grep -q "alias kca_complexity=" ~/.bashrc; then
 fi
 
 source ~/.bashrc
+echo "Setup complete"
